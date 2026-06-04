@@ -128,7 +128,7 @@ const clientWorks = [
   {
     title: "Shubhh Labhh Construction",
     category: "Construction Company Website",
-    url: "https://saugat2737.github.io/shubhlabhconstruction/",
+    url: "https://shubhlabhconstruction.com.np/",
     summary:
       "A professional business website built to present construction services, improve trust and make enquiries easier for prospective clients.",
     feedback:
@@ -194,7 +194,7 @@ const team = [
     copy: "Leads business strategy, partnerships and client relationships.",
     initials: "SR",
     emailSubject: "Attention Sugam Rauniyar - BiratTech enquiry",
-    portfolioHref: "#portfolio",
+    portfolioHref: "https://sugamrauniyar.com.np/",
     linkedinHref: "https://www.linkedin.com/in/sugam-rauniyar",
   },
   {
@@ -203,7 +203,7 @@ const team = [
     copy: "Leads technology, software architecture and product development.",
     initials: "SR",
     emailSubject: "Attention Saugat Rauniyar - BiratTech enquiry",
-    portfolioHref: "#portfolio",
+    portfolioHref: "https://saugatrauniyar.vercel.app/",
     linkedinHref: "https://www.linkedin.com/in/saugat-rauniyar/",
   },
 ];
