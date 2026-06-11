@@ -128,39 +128,68 @@ const clientWorks = [
   {
     title: "Shubhh Labhh Construction",
     category: "Construction Company Website",
+    image: "/shubhlabh-preview.jpg",
     url: "https://shubhlabhconstruction.com.np/",
     summary:
       "A professional business website built to present construction services, improve trust and make enquiries easier for prospective clients.",
     feedback:
       "The website presents our company clearly and gives customers a simple way to understand our work and contact us.",
   },
+  {
+    title: "Capital Marketing Nepal",
+    category: "Corporate Gifts & Promotional Products Website",
+    image: "/capitalmarketing-preview.jpg",
+    url: "https://capitalmarketingnp.com/",
+    summary:
+      "A modern corporate website designed to showcase promotional products, corporate gifts, branding solutions and generate enquiries from businesses across Nepal.",
+    feedback:
+      "The website helps customers explore our products easily and contact us quickly for corporate gift requirements.",
+  },
 ];
 
 const pricing = [
   {
     title: "Starter Website",
+    originalPrice: "NPR 14,999",
     price: "NPR 9,995",
-    description: "A polished online presence for growing brands.",
-    features: ["Responsive website", "Up to 5 pages", "Contact integration", "Basic SEO setup"],
+    discount: "33% OFF",
+    description: "Perfect for startups and small businesses.",
+    features: [
+      "Responsive website",
+      "Up to 5 pages",
+      "Contact integration",
+      "Basic SEO setup",
+      "Free 1 Month Support",
+    ],
   },
   {
     title: "Business Website",
+    originalPrice: "NPR 29,999",
     price: "NPR 20,499",
-    description: "A stronger website built to support business goals.",
+    discount: "Best Value",
     featured: true,
+    description: "Our most popular package for growing companies.",
     features: [
       "Custom professional design",
       "Up to 10 pages",
       "CMS-ready structure",
-      "Analytics and SEO setup",
+      "Analytics & SEO setup",
       "Launch support",
+      "Free Domain Setup",
+      "Free 3 Months Support",
     ],
   },
   {
     title: "Custom Software",
     price: "Custom Pricing",
     description: "Tailored systems designed for your workflows.",
-    features: ["Requirement discovery", "Scalable architecture", "Web or mobile product", "Dedicated support"],
+    features: [
+      "Requirement discovery",
+      "Scalable architecture",
+      "Web or mobile product",
+      "Dedicated support",
+      "Free Consultation",
+    ],
   },
 ];
 
@@ -203,7 +232,7 @@ const team = [
     copy: "Leads technology, software architecture and product development.",
     initials: "SR",
     emailSubject: "Attention Saugat Rauniyar - BiratTech enquiry",
-    portfolioHref: "https://saugatrauniyar.vercel.app/",
+    portfolioHref: "https://saugatrauniyar.com.np/",
     linkedinHref: "https://www.linkedin.com/in/saugat-rauniyar/",
   },
 ];
@@ -353,7 +382,7 @@ function DashboardPreview() {
       <div className="stat-grid">
         <div className="stat">
           <p>Active Projects</p>
-          <strong>2</strong>
+          <strong>3</strong>
           <span className="positive">+12.4%</span>
         </div>
         <div className="stat">
@@ -628,14 +657,12 @@ function Portfolio() {
             <Reveal key={work.title}>
               <article className="client-work-card">
                 <div className="client-work-preview">
-                  <div className="preview-window">
-                    <span /><span /><span />
-                  </div>
-                  <div className="client-browser-lines">
-                    <span />
-                    <span />
-                    <span />
-                  </div>
+                  <img
+                    src={work.image}
+                    alt={work.title}
+                    className="client-work-image"
+                  />
+
                   <div className="client-browser-card">
                     <BriefcaseBusiness size={24} />
                     <span>Live Client Website</span>
@@ -654,7 +681,7 @@ function Portfolio() {
             </Reveal>
           ))}
         </div>
-        <div className="card-grid portfolio-grid">
+        {/* <div className="card-grid portfolio-grid">
           {projects.map(({ title, type, icon: Icon }) => (
             <Reveal key={title}>
               <motion.article className="project-card" whileHover={{ y: -5 }}>
@@ -679,7 +706,7 @@ function Portfolio() {
               </motion.article>
             </Reveal>
           ))}
-        </div>
+        </div> */}
       </div>
     </section>
   );
@@ -692,26 +719,114 @@ function Pricing() {
         <Reveal>
           <SectionTitle
             eyebrow="Pricing"
-            title="Clear Plans for Your Next Project"
-            copy="A professional starting point, with custom proposals available for every business."
+            title="Special Launch Offers"
+            copy="Professional software solutions at introductory pricing. Save big while the offer lasts."
           />
         </Reveal>
+
         <div className="pricing-grid">
           {pricing.map((plan) => (
             <Reveal key={plan.title}>
-              <article className={`pricing-card ${plan.featured ? "featured" : ""}`}>
-                {plan.featured && <span className="popular">Most Popular</span>}
+              <article
+                className={`pricing-card ${plan.featured ? "featured" : ""
+                  }`}
+              >
+                {plan.featured && (
+                  <span className="popular">
+                    🔥 Most Popular
+                  </span>
+                )}
+
+                {plan.discount && (
+                  <span className="discount-badge">
+                    🎉 {plan.discount}
+                  </span>
+                )}
+
                 <h3>{plan.title}</h3>
+
+                {plan.originalPrice && (
+                  <p className="old-price">
+                    {plan.originalPrice}
+                  </p>
+                )}
+
                 <p className="price">{plan.price}</p>
-                <p className="pricing-copy">{plan.description}</p>
+
+                <p className="pricing-copy">
+                  {plan.description}
+                </p>
+
                 <ul>
                   {plan.features.map((feature) => (
-                    <li key={feature}><Check size={17} />{feature}</li>
+                    <li key={feature}>
+                      <Check size={17} />
+                      {feature}
+                    </li>
                   ))}
                 </ul>
-                <ButtonLink href="#contact" secondary={!plan.featured}>Get Started</ButtonLink>
+
+                <ButtonLink
+                  href="#contact"
+                  secondary={!plan.featured}
+                >
+                  Get Started
+                </ButtonLink>
               </article>
             </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+function Testimonials() {
+  const testimonials = [
+    {
+      quote:
+        "BiratTech transformed our online presence. Their team was professional, responsive and delivered exactly what we needed. The website clearly represents our company and has helped us generate more business enquiries.",
+      name: "Santosh Bhagat",
+      role: "CEO, Shubhh Labhh Construction",
+    },
+    {
+      quote:
+        "The website design exceeded our expectations. The team understood our requirements, showcased our products professionally and ensured a smooth experience from start to finish.",
+      name: "Chandra Thakur",
+      role: "CEO,Capital Marketing Nepal",
+    },
+    // {
+    //   quote:
+    //     "Fast delivery, clean design and excellent support. BiratTech provides high-quality digital solutions that help businesses establish a strong online presence.",
+    //   name: "Client Review",
+    //   role: "Business Owner",
+    // },
+  ];
+
+  return (
+    <section className="section section-soft">
+      <div className="container">
+        <div className="section-heading">
+          <span className="eyebrow">Testimonials</span>
+          <h2>What Our Clients Say</h2>
+          <p>
+            Real feedback from businesses we've helped grow online.
+          </p>
+        </div>
+
+        <div className="testimonial-grid">
+          {testimonials.map((item) => (
+            <article className="testimonial-card" key={item.name}>
+              <div className="stars">★★★★★</div>
+
+              <p className="testimonial-quote">
+                "{item.quote}"
+              </p>
+
+              <div className="testimonial-author">
+                <h3>{item.name}</h3>
+                <span>{item.role}</span>
+              </div>
+            </article>
           ))}
         </div>
       </div>
@@ -971,61 +1086,123 @@ function Contact() {
 }
 
 function Footer() {
-  return (
-    <footer className="footer">
-      <div className="container footer-grid">
-        <div className="footer-brand">
-          <Logo light />
-          <p>Building Digital Excellence</p>
-        </div>
-        <div className="footer-links">
-          <h3>Company</h3>
-          {navigation.slice(1).map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`}>{item}</a>
-          ))}
-        </div>
-        <div className="footer-links">
-          <h3>Legal</h3>
-          <a href={privacyPolicyHref} target="_blank" rel="noreferrer">Privacy</a>
-          <a href={termsHref} target="_blank" rel="noreferrer">Terms</a>
-        </div>
-        <div className="footer-contact">
-          <h3>Contact</h3>
-          <a href={`mailto:${businessEmail}`}>{businessEmail}</a>
-          <a href={phoneHref}>{phoneDisplay}</a>
-          <p>Biratnagar, Nepal 56613</p>
-          <div className="footer-map">
-            <iframe
-              title="BiratTech office location in Biratnagar, Nepal 56613"
-              src="https://www.google.com/maps?q=Biratnagar%2C%20Nepal%2056613&output=embed"
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            />
-          </div>
-          <div className="social-links" aria-label="Social media">
-            {/* <a href="https://www.facebook.com/birat.tech" aria-label="Facebook"><SocialMark>f</SocialMark></a> */}
-            <a href="https://www.instagram.com/birat.tech?igsh=OXVkeDBxdzV5MHN0" aria-label="Instagram"><SocialMark>IG</SocialMark></a>
-            <a href="https://www.linkedin.com/in/saugat-rauniyar/" aria-label="LinkedIn"><SocialMark>in</SocialMark></a>
-            <a
-              href={whatsappHref}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="WhatsApp"
-            >
-              <MessageCircleMore size={18} />
-            </a>
-          </div>
-        </div>
+  return (<footer className="footer"> <div className="container footer-grid">
+    <div className="footer-brand">
+      <Logo light />
+
+      <p className="footer-tagline">
+        Building Digital Excellence
+      </p>
+
+      <p className="footer-description">
+        Websites, custom software, mobile apps and AI solutions
+        built for businesses in Nepal and worldwide.
+      </p>
+    </div>
+
+    <div className="footer-links">
+      <h3>Company</h3>
+
+      {navigation.slice(1).map((item) => (
+        <a
+          key={item}
+          href={`#${item.toLowerCase()}`}
+        >
+          {item}
+        </a>
+      ))}
+    </div>
+
+    <div className="footer-links">
+      <h3>Legal</h3>
+
+      <a
+        href={privacyPolicyHref}
+        target="_blank"
+        rel="noreferrer"
+      >
+        Privacy Policy
+      </a>
+
+      <a
+        href={termsHref}
+        target="_blank"
+        rel="noreferrer"
+      >
+        Terms & Conditions
+      </a>
+    </div>
+
+    <div className="footer-contact">
+      <h3>Contact</h3>
+
+      <a href={`mailto:${businessEmail}`}>
+        📧 {businessEmail}
+      </a>
+
+      <a href={phoneHref}>
+        📞 {phoneDisplay}
+      </a>
+
+      <p>📍 Biratnagar, Nepal</p>
+
+      <div className="footer-map">
+        <iframe
+          title="BiratTech office location"
+          src="https://www.google.com/maps?q=Biratnagar%2C%20Nepal&output=embed"
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          allowFullScreen
+        />
       </div>
-      <div className="container footer-bottom">
-        <p>&copy; 2026 BiratTech. All rights reserved.</p>
-        <p>Built with passion in Nepal.</p>
+
+      <div
+        className="social-links"
+        aria-label="Social media"
+      >
+        <a
+          href="https://www.instagram.com/birat.tech?igsh=OXVkeDBxdzV5MHN0"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Instagram"
+        >
+          <SocialMark>IG</SocialMark>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/saugat-rauniyar/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="LinkedIn"
+        >
+          <SocialMark>in</SocialMark>
+        </a>
+
+        <a
+          href={whatsappHref}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="WhatsApp"
+        >
+          <MessageCircleMore size={18} />
+        </a>
       </div>
-    </footer>
+    </div>
+
+  </div>
+
+    <div className="container footer-bottom">
+      <p>
+        © {new Date().getFullYear()} BiratTech. All rights reserved.
+      </p>
+
+      <p>Made in Nepal 🇳🇵</p>
+    </div>
+  </footer>
+
+
   );
 }
-
 export function LandingPage() {
   return (
     <>
@@ -1037,6 +1214,7 @@ export function LandingPage() {
         <Team />
         <Services />
         <Portfolio />
+        <Testimonials />
         <Pricing />
         <FAQ />
         <CTA />
